@@ -87,17 +87,19 @@ class DeltaH_PolePowDialog(QtWidgets.QDialog, FORM_CLASS):
                 punkty.append((punkt.x(), punkt.y()))
 
             n = len(punkty)
+            if n > 2:
 
-            # Dodajemy pierwszy punkt na koniec listy
-            punkty.append(punkty[0])
-
-            suma = 0.0
-            for i in range(n):
-                suma += (punkty[i+1][0] + punkty[i][0]) * (punkty[i+1][1] - punkty[i][1])
-
-            pole_powierzchni = abs(suma) / 2.0
-            self.textEdit_pokaz_pole_powierzchni.setText(f"Pole powierzchni: {pole_powierzchni} [m^2]")
+                # Dodajemy pierwszy punkt na koniec listy
+                punkty.append(punkty[0])
+    
+                suma = 0.0
+                for i in range(n):
+                    suma += (punkty[i+1][0] + punkty[i][0]) * (punkty[i+1][1] - punkty[i][1])
+    
+                pole_powierzchni = abs(suma) / 2.0
+                self.textEdit_pokaz_pole_powierzchni.setText(f"Pole powierzchni: {pole_powierzchni} [m^2]")
+            else:
+                self.textEdit_pokaz_pole_powierzchni.setText("Zaznacz conajmniej 3 punkty.")
         else:
-            self.textEdit_pokaz_pole_powierzchni.setText("Zaznacz dokładnie trzy punkty.")
             self.textEdit_pokaz_pole_powierzchni.setText("Warstwa nie jest warstwą punktową.")
 
