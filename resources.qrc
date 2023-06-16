@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/delta_h_pole_powierzchni" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
